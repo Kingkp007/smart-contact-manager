@@ -1,0 +1,33 @@
+# Ignore node_modules (scm-client)
+scm-client/node_modules/
+
+# Ignore build artifacts (scm-client)
+scm-client/build/
+scm-client/dist/
+
+# Ignore IDE and OS files
+*.idea/
+*.vscode/
+*.DS_Store
+
+# Ignore target folder (scm-server)
+scm-server/target/
+
+# Ignore Maven wrapper files
+scm-server/.mvn/
+scm-server/mvnw
+scm-server/mvnw.cmd
+
+# Ignore Maven dependencies (optional, useful for space-saving)
+scm-server/.settings/
+scm-server/*.iml
+*.class
+
+# Ignore STS-specific files
+scm-server/.project
+scm-server/.classpath
+scm-server/.settings/
+
+# Ignore other environment files
+*.env
+*.
