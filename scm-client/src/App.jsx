@@ -1,35 +1,83 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import React from "react";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import Home from "./pages/Home";
+import About from "./pages/About";
+import Services from "./pages/Services";
+import Signup from "./pages/Signup";
+import Login from "./pages/Login";
+import Navbar from "./components/Navbar";
+import Profile from "./pages/Profile";
+import AddContacts from "./pages/AddContacts";
+import Contacts from "./pages/Contacts";
+import ContactUs from "./pages/ContactUs";
+import Products from "./pages/Products";
+import Dashboard from "./components/Dashboard";
+import ProtectedRoute from "./components/ProtectedRoutes";
+import PublicRoutes from "./components/PublicRoutes";
 
-function App() {
-  const [count, setCount] = useState(0)
-
+const App = () => {
   return (
     <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<Dashboard />} />
+          <Route path="/home" element={<Home />} />
+          <Route
+            path="/login"
+            element={
+              <PublicRoutes>
+                <Login />
+              </PublicRoutes>
+            }
+          />
+          <Route
+            path="/signup"
+            element={
+              <PublicRoutes>
+                <Signup />
+              </PublicRoutes>
+            }
+          />
+          <Route path="/about" element={<About />} />
+          <Route path="/services" element={<Services />} />
+          <Route
+            path="/profile"
+            element={
+              <ProtectedRoute>
+                <Profile />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/add-contact"
+            element={
+              <ProtectedRoute>
+                <AddContacts />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/contacts"
+            element={
+              <ProtectedRoute>
+                <Contacts />
+              </ProtectedRoute>
+            }
+          />
+          <Route path="/contact-us" element={<ContactUs />} />
+          <Route
+            path="/products"
+            element={
+              <ProtectedRoute>
+                <Products />
+              </ProtectedRoute>
+            }
+          />
+          {/* <Route path="*" element={<NotFound />} /> */}
+        </Routes>
+      </BrowserRouter>
     </>
-  )
-}
+  );
+};
 
-export default App
+export default App;
